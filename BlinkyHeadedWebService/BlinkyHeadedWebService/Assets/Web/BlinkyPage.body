@@ -1,0 +1,7 @@
+<form id="BlinkyForm" method="GET" action="BlinkyPage.htm">
+	<button id="onOffButton" class="blinkOff"></button>
+	<div id="circle" class="blinkOff"></div>
+	I'm <span id="status">NOT </span>gonna blink at ya.
+	</p>
+	<input id="blinkyIntervalSlide" name="blinkyIntervalSlide" type="range">
+</form>

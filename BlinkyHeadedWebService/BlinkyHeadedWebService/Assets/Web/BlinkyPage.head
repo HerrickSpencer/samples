@@ -1,0 +1,63 @@
+<script type="text/javascript">
+	var blinkInterval = 0;
+	$(document).ready(function()
+	{
+		$("#blinkyIntervalSlide").change(function () { 
+			BlinkyForm.submit();
+		});
+		$("#blinkyIntervalSlide").val(blinkInterval);
+	
+		if( blinkInterval > 0 )
+		{ 
+			$("#status").hide();
+			$("#circle").html("HELLO"+$("#blinkyIntervalSlide").val());
+			$("#onOffButton").toggleClass("blinkOff blinkOn");
+			$("#onOffButton").click(function() { 
+				blinkyIntervalSlide.value=0;
+				BlinkyForm.submit();
+			}); 
+			setInterval( function () {
+				$("#circle").toggleClass("blinkOff blinkOn");
+				}, 10000/blinkInterval
+			);
+		}
+		else
+		{
+			$("#onOffButton").click(function() { 
+				blinkyIntervalSlide.value=50;
+				BlinkyForm.submit();
+			}); 
+		}
+	}); 
+</script>
+<style>
+	#onOffButton {
+		width: 100px;
+		height: 20px;
+		font-size:20;
+		text-align:center;
+		margin: 2cm 0cm 0.5cm 0cm;
+	}
+	#circle {
+		width: 100px;
+		height: 100px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		font-size:0;
+		align
+	}
+	.blinkOn {
+		background: red;
+	}
+	.blinkOff {
+		background: grey;
+	}
+	.blinkOn:after {
+		content: "STOP";
+	}
+	.blinkOff:after {
+		content: "START";
+	}
+	
+</style>
