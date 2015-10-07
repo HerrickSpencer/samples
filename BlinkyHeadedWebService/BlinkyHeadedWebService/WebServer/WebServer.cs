@@ -20,33 +20,33 @@ using Windows.System.Threading;
 
 namespace BlinkyHeadedWebService
 {
-    public class WebServer
-    {
-        public event HttpServer.BlinkIntervalChangedHandler BlinkIntervalChanged;
+    //public class WebServer
+    //{
+    //    public event HttpServer.BlinkIntervalChangedHandler BlinkIntervalChanged;
 
-        /// <summary>
-        /// Starts the web server on the specified port
-        /// </summary>
-        /// <param name="serverPort">Web server port</param>
-        public void Start(int serverPort)
-        {
-            var server = new HttpServer(serverPort);
-            server.BlinkIntervalChanged += Server_BlinkIntervalChanged;
-            IAsyncAction asyncAction = ThreadPool.RunAsync(
-                (s) =>
-                {
-                    server.StartServer();
-                });
-        }
+    //    /// <summary>
+    //    /// Starts the web server on the specified port
+    //    /// </summary>
+    //    /// <param name="serverPort">Web server port</param>
+    //    public void Start(int serverPort)
+    //    {
+    //        var server = new HttpServer(serverPort);
+    //        server.BlinkIntervalChanged += Server_BlinkIntervalChanged;
+    //        IAsyncAction asyncAction = ThreadPool.RunAsync(
+    //            (s) =>
+    //            {
+    //                server.StartServer();
+    //            });
+    //    }
 
-        private void Server_BlinkIntervalChanged(int newBlinkInterval)
-        {
-            if (this.BlinkIntervalChanged!=null)
-            {
-                this.BlinkIntervalChanged(newBlinkInterval);
-            }
-        }
-    }
+    //    private void Server_BlinkIntervalChanged(int newBlinkInterval)
+    //    {
+    //        if (this.BlinkIntervalChanged!=null)
+    //        {
+    //            this.BlinkIntervalChanged(newBlinkInterval);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// HttpServer class that services the content for the web interface
@@ -57,7 +57,25 @@ namespace BlinkyHeadedWebService
         private int port = 8000;
         private readonly StreamSocketListener listener;
         private WebHelper helper;
-        public int BlinkInterval;
+        private int blinkInterval;
+
+        public int BlinkInterval
+        {
+            get
+            {
+                return blinkInterval;
+            }
+
+            set
+            {
+                if (blinkInterval != value && value >=0 && value <= 100)
+                { 
+                    blinkInterval = value;
+                    RaiseBlinkIntervalChanged();
+                }
+            }
+        }
+
         public delegate void BlinkIntervalChangedHandler(int newBlinkInterval);
         public event BlinkIntervalChangedHandler BlinkIntervalChanged;
 
@@ -91,6 +109,8 @@ namespace BlinkyHeadedWebService
 #pragma warning disable CS4014
             listener.BindServiceNameAsync(port.ToString());
 #pragma warning restore CS4014
+
+            this.RaiseBlinkIntervalChanged(); //init a value;
         }
 
         public void Dispose()
@@ -268,7 +288,7 @@ namespace BlinkyHeadedWebService
         {
             if (this.BlinkIntervalChanged != null)
             {
-                this.BlinkIntervalChanged(BlinkInterval);
+                this.BlinkIntervalChanged(this.BlinkInterval);
             }
         }
 

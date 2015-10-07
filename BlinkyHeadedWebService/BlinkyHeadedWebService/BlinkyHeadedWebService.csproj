@@ -100,6 +100,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
+    <PRIResource Include="Strings\zh-TW\Resources.resw" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
+    <PRIResource Include="Strings\ru-RU\Resources.resw" />
+    <PRIResource Include="Strings\pt-BR\Resources.resw" />
+    <PRIResource Include="Strings\ko-KR\Resources.resw" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw" />
+    <PRIResource Include="Strings\it-IT\Resources.resw" />
+    <PRIResource Include="Strings\fr-FR\Resources.resw" />
+    <PRIResource Include="Strings\es-ES\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\de-DE\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -148,6 +159,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsIoT, Version=10.0.10240.0">
+      <Name>Windows IoT Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
