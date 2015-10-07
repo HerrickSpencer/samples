@@ -10,6 +10,7 @@ namespace BlinkyHeadedWebService
     {
         public static string HOME_PAGE = "home.htm";
         public static string BLINKY_PAGE = "BlinkyPage.htm";
+        public static string BLINKY_SETINTERVAL = "BlinkyPageSetInterval.htm";
         public static string ASSETSWEB = @"Assets\Web\";
     }
 }

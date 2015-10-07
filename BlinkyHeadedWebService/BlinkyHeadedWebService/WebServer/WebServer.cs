@@ -154,6 +154,12 @@ namespace BlinkyHeadedWebService
                         Debug.WriteLine("request for: {0}", requestMethodParts[1]);
                         await writeResponseAsync(requestMethodParts[1], output, socket.Information);
                     }
+                    if (requestMethodParts[0].ToUpper() == "POST")
+                    {
+                        string requestUri = string.Format("{0}?{1}", requestMethodParts[1], requestParts[14]);
+                        Debug.WriteLine("POST request for: {0} ", requestUri);
+                        await writeResponseAsync(requestUri, output, socket.Information);
+                    }
                     else
                     {
                         throw new InvalidDataException("HTTP method not supported: "
@@ -171,8 +177,9 @@ namespace BlinkyHeadedWebService
         {
             try
             {
-                string[] requestParts = request.Split('/');
+                request = request.TrimEnd('\0'); //remove possible null from POST request
 
+                string[] requestParts = request.Split('/');
                 // Request for the root page, so redirect to home page
                 if (request.Equals("/"))
                 {
@@ -185,7 +192,7 @@ namespace BlinkyHeadedWebService
                     string html = await helper.GenerateStatusPage();
                     await WebHelper.WriteToStream(html, os);
                 }
-                else if (request.Contains(NavConstants.BLINKY_PAGE))
+                else if (request.Contains(NavConstants.BLINKY_SETINTERVAL))
                 {
                     if (!string.IsNullOrEmpty(request))
                     {
@@ -204,6 +211,10 @@ namespace BlinkyHeadedWebService
                             }
                         }
                     }
+                    await redirectToPage(NavConstants.BLINKY_PAGE, os);
+                }
+                else if (request.Contains(NavConstants.BLINKY_PAGE))
+                {
                     string html = await helper.GenerateBlinkyPage(BlinkInterval);
                     await WebHelper.WriteToStream(html, os);
                 }
