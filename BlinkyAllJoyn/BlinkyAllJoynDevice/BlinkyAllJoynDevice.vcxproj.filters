@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>47d39edb-be26-4f2c-aa19-c8cf617ffee2</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="AllJoynBusObjectManager.cpp" />
+    <ClCompile Include="AllJoynHelpers.cpp" />
+    <ClCompile Include="BlinkyConsumer.cpp" />
+    <ClCompile Include="BlinkyProducer.cpp" />
+    <ClCompile Include="BlinkyServiceEventAdapter.cpp" />
+    <ClCompile Include="BlinkyServiceEventArgs.cpp" />
+    <ClCompile Include="BlinkySignals.cpp" />
+    <ClCompile Include="BlinkyWatcher.cpp" />
+    <ClCompile Include="TypeConversionHelpers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="AllJoynBusObjectManager.h" />
+    <ClInclude Include="AllJoynHelpers.h" />
+    <ClInclude Include="BlinkyConsumer.h" />
+    <ClInclude Include="BlinkyEventArgs.h" />
+    <ClInclude Include="BlinkyMethodResults.h" />
+    <ClInclude Include="BlinkyProducer.h" />
+    <ClInclude Include="BlinkyServiceEventAdapter.h" />
+    <ClInclude Include="BlinkyServiceEventArgs.h" />
+    <ClInclude Include="BlinkySignals.h" />
+    <ClInclude Include="BlinkyStructures.h" />
+    <ClInclude Include="BlinkyWatcher.h" />
+    <ClInclude Include="IBlinkyService.h" />
+    <ClInclude Include="TypeConversionHelpers.h" />
+  </ItemGroup>
+</Project>
