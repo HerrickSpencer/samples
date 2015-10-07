@@ -29,7 +29,7 @@ namespace BlinkyHeadedWebService
         private DispatcherTimer blinkyTimer;
         private Windows.ApplicationModel.Resources.ResourceLoader loader;
         private int LEDStatus = 0;
-        private readonly int LED_PIN = 5; // on-board LED on the Rpi2
+        private readonly int LED_PIN = 47; // on-board LED on the Rpi2
         private GpioPin pin;
         private SolidColorBrush redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
         private SolidColorBrush grayBrush = new SolidColorBrush(Windows.UI.Colors.LightGray);
@@ -83,6 +83,7 @@ namespace BlinkyHeadedWebService
                 else
                 {
                     this.blinkyTimer.Stop();
+                    this.TurnOffLED();
                     this.blinkyTimer.Interval = TimeSpan.FromMilliseconds(0);
                     BlinkyStartStop.Content = loader.GetString("BlinkyStart");
                 }
@@ -169,7 +170,14 @@ namespace BlinkyHeadedWebService
 
         private void BlinkyStartStop_Click(object sender, RoutedEventArgs e)
         {
-            this.webServer.BlinkInterval = 0;
+            if (this.blinkyTimer.IsEnabled)
+            { 
+                this.webServer.BlinkInterval = 0;
+            }
+            else
+            {
+                this.webServer.BlinkInterval = 50;
+            }
         }
 
         private void Delay_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
