@@ -154,7 +154,7 @@ namespace BlinkyHeadedWebService
                         Debug.WriteLine("request for: {0}", requestMethodParts[1]);
                         await writeResponseAsync(requestMethodParts[1], output, socket.Information);
                     }
-                    if (requestMethodParts[0].ToUpper() == "POST")
+                    else if (requestMethodParts[0].ToUpper() == "POST")
                     {
                         string requestUri = string.Format("{0}?{1}", requestMethodParts[1], requestParts[14]);
                         Debug.WriteLine("POST request for: {0} ", requestUri);

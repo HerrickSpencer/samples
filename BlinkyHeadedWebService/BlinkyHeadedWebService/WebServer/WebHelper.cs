@@ -34,7 +34,7 @@ namespace BlinkyHeadedWebService
         public async Task InitializeAsync()
         {
             // Load the html page templates
-            await LoadBlinkyPages();
+            await LoadHTMLPages();
         }
         
         /// <summary>
@@ -94,7 +94,7 @@ namespace BlinkyHeadedWebService
             return GeneratePage("Blinky", "Blinky Page", htmlBlinkyBody, htmlBlinkyHead.Replace("var blinkInterval = 0;", string.Format( "var blinkInterval = {0};", blinkyInterval)));
         }
 
-        public async Task LoadBlinkyPages()
+        public async Task LoadHTMLPages()
         {
             var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
             

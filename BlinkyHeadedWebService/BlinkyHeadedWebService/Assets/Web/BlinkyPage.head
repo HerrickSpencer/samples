@@ -9,8 +9,7 @@
 	
 		if( blinkInterval > 0 )
 		{ 
-			$("#status").hide();
-			$("#circle").html("HELLO"+$("#blinkyIntervalSlide").val());
+			$("#status").html(Math.floor(10000/blinkInterval) + "ms");
 			$("#onOffButton").toggleClass("blinkOff blinkOn");
 			$("#onOffButton").click(function() { 
 				blinkyIntervalSlide.value=0;
@@ -36,7 +35,9 @@
 		height: 20px;
 		font-size:20;
 		text-align:center;
-		margin: 2cm 0cm 0.5cm 0cm;
+	}
+	.center {
+		text-align:center;
 	}
 	#circle {
 		width: 100px;
@@ -45,7 +46,6 @@
 		-webkit-border-radius: 50px;
 		border-radius: 50px;
 		font-size:0;
-		align
 	}
 	.blinkOn {
 		background: red;

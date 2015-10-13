@@ -132,6 +132,9 @@
     <None Include="BlinkyHeadedWebService_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Web\css\blinky.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Web\css\common.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
