@@ -138,6 +138,9 @@
     <Content Include="Assets\Web\css\common.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Web\css\slider.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Web\default.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

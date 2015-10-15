@@ -13,7 +13,19 @@ body {
 	margin: 0;
 	padding: 20px;
 }
-
+.button {
+	font-size:20;
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+	text-transform: lowercase;
+	margin: 0 auto;
+}
+.button:hover {
+    background:linear-gradient(90deg, #32bdfe, #65daf4);
+    color:#E6E6E6;
+}
 .container {
 	background-color: #FFFFFF;
 	min-height: 720px;
