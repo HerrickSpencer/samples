@@ -1,16 +1,30 @@
 <script type="text/javascript">
 	var blinkInterval = 0;
+	var sliding = false;
 	$(document).ready(function()
 	{
+		$("#blinkyIntervalSlide").mousedown(function () { 
+			sliding = true;
+		});
+		$("#blinkyIntervalSlide").mouseup(function () { 
+			sliding = false;
+			if ($("#blinkyIntervalSlide").val() != blinkInterval)
+			{
+				BlinkyForm.submit();
+			}
+		});
 		$("#blinkyIntervalSlide").change(function () { 
-			BlinkyForm.submit();
+			if (!sliding)
+			{
+				BlinkyForm.submit();
+			}
 		});
 		$("#blinkyIntervalSlide").val(blinkInterval);
-	
+
 		if( blinkInterval > 0 )
 		{ 
 			$("#status").html(Math.floor(10000/blinkInterval) + "ms");
-			$("#onOffButton").toggleClass("blinkOff blinkOn");
+			$("#onOffButton").toggleClass("blinkOffButton blinkOnButton");
 			$("#onOffButton").click(function() { 
 				$("#blinkyIntervalSlide").val(0);
 				BlinkyForm.submit();
