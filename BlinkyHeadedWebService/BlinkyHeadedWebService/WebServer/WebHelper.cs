@@ -91,7 +91,7 @@ namespace BlinkyHeadedWebService
         {
             await Task.Run(() => { Debug.WriteLine("Generate Blinky with {0} interval", blinkyInterval); }); // make compiler happy
 
-            return GeneratePage("Blinky", "Blinky Page", htmlBlinkyBody, htmlBlinkyHead.Replace("var blinkInterval = 0;", string.Format( "var blinkInterval = {0};", blinkyInterval)));
+            return GeneratePage("Hello Blinky", "Blinky Page", htmlBlinkyBody, htmlBlinkyHead.Replace("var blinkInterval = 0;", string.Format( "var blinkInterval = {0};", blinkyInterval)));
         }
 
         public async Task LoadHTMLPages()

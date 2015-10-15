@@ -12,7 +12,7 @@
 			$("#status").html(Math.floor(10000/blinkInterval) + "ms");
 			$("#onOffButton").toggleClass("blinkOff blinkOn");
 			$("#onOffButton").click(function() { 
-				blinkyIntervalSlide.value=0;
+				$("#blinkyIntervalSlide").val(0);
 				BlinkyForm.submit();
 			}); 
 			setInterval( function () {
@@ -23,41 +23,9 @@
 		else
 		{
 			$("#onOffButton").click(function() { 
-				blinkyIntervalSlide.value=50;
+				$("#blinkyIntervalSlide").val(50);
 				BlinkyForm.submit();
 			}); 
 		}
 	}); 
 </script>
-<style>
-	#onOffButton {
-		width: 100px;
-		height: 20px;
-		font-size:20;
-		text-align:center;
-	}
-	.center {
-		text-align:center;
-	}
-	#circle {
-		width: 100px;
-		height: 100px;
-		-moz-border-radius: 50px;
-		-webkit-border-radius: 50px;
-		border-radius: 50px;
-		font-size:0;
-	}
-	.blinkOn {
-		background: red;
-	}
-	.blinkOff {
-		background: grey;
-	}
-	.blinkOn:after {
-		content: "STOP";
-	}
-	.blinkOff:after {
-		content: "START";
-	}
-	
-</style>

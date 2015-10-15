@@ -1,12 +1,26 @@
+					  <div class='introduction'>
+				      <div class='row'>
+				      	<div class='col-md-offset-1 col-md-10 title center'>
+											Congratulations!
+								</div>
+				      	<div class='col-md-offset-1 col-md-10 center'>
+											Your Raspbery Pi 2 is now officially an Internet of Things device!
+								</div>
+							</div>
+						</div>
           	<form id="BlinkyForm" method="POST" action="BlinkyPageSetInterval.htm">
 						  <div class='controlpane'>
 					      <div class='row'>
-					      	<div class='col-md-offset-4 col-md-4'>
-										<button id="onOffButton" class="blinkOff"></button>
+					      	<div class='col-md-12 center'>
+										<div id="onOffButton" class="blinkOff"></div>
+									</div>
+								</div>
+					      <div class='row spacer'>
+					      	<div class='col-md-12 center'>
 									</div>
 								</div>
 					      <div class='row'>
-					      	<div class='col-md-offset-4 col-md-4'>
+					      	<div class='col-md-12 center'>
 										<div id="circle" class="blinkOff"></div>
 									</div>
 								</div>
@@ -16,15 +30,17 @@
 									</div>
 								</div>
 					      <div class='row'>
-					      	<div class='col-md-offset-3 col-md-6'>
+					      	<div class='col-md-offset-3 col-md-6 center'>
 										<input id="blinkyIntervalSlide" name="blinkyIntervalSlide" type="range">
 									</div>
 								</div>
+							</div>
+						  <div class='footer'>
 					      <div class='row'>
-					      	<div id="Description" class='col-md-12'>
-										Look for the small light on your Raspberry PI 2.
+					      	<div class='col-md-offset-1 col-md-10 center'>
+										Use the slider to control how fast the LED on your device flashes.
 										</br>
-										Feel free to gather all of your friends and host a huge rave around the LED.
+										Take a look at the small green LED on the front corner of your Raspberry PI 2, next to the SD Card and Raspberry Pi Logo.
 									</div>
 								</div>
 							</div>

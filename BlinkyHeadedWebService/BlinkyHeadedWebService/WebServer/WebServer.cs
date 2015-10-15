@@ -20,34 +20,6 @@ using Windows.System.Threading;
 
 namespace BlinkyHeadedWebService
 {
-    //public class WebServer
-    //{
-    //    public event HttpServer.BlinkIntervalChangedHandler BlinkIntervalChanged;
-
-    //    /// <summary>
-    //    /// Starts the web server on the specified port
-    //    /// </summary>
-    //    /// <param name="serverPort">Web server port</param>
-    //    public void Start(int serverPort)
-    //    {
-    //        var server = new HttpServer(serverPort);
-    //        server.BlinkIntervalChanged += Server_BlinkIntervalChanged;
-    //        IAsyncAction asyncAction = ThreadPool.RunAsync(
-    //            (s) =>
-    //            {
-    //                server.StartServer();
-    //            });
-    //    }
-
-    //    private void Server_BlinkIntervalChanged(int newBlinkInterval)
-    //    {
-    //        if (this.BlinkIntervalChanged!=null)
-    //        {
-    //            this.BlinkIntervalChanged(newBlinkInterval);
-    //        }
-    //    }
-    //}
-
     /// <summary>
     /// HttpServer class that services the content for the web interface
     /// </summary>
@@ -156,7 +128,7 @@ namespace BlinkyHeadedWebService
                     }
                     else if (requestMethodParts[0].ToUpper() == "POST")
                     {
-                        string requestUri = string.Format("{0}?{1}", requestMethodParts[1], requestParts[14]);
+                        string requestUri = string.Format("{0}?{1}", requestMethodParts[1], requestParts[requestParts.Length-1]);
                         Debug.WriteLine("POST request for: {0} ", requestUri);
                         await writeResponseAsync(requestUri, output, socket.Information);
                     }
@@ -183,7 +155,7 @@ namespace BlinkyHeadedWebService
                 // Request for the root page, so redirect to home page
                 if (request.Equals("/"))
                 {
-                    await redirectToPage(NavConstants.HOME_PAGE, os);
+                    await redirectToPage(NavConstants.BLINKY_PAGE, os);
                 }
                 // Request for the home page
                 else if (request.Contains(NavConstants.HOME_PAGE))
