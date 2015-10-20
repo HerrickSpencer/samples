@@ -8,29 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="300" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="0.1*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="BlinkyStartStop" FontSize="45.333" Foreground="Red" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderBrush="#2a2a2a" HorizontalAlignment="Stretch" Click="BlinkyStartStop_Click" Margin="0,17,0,3" Content="STOP"/>
-                    <Ellipse x:Name="LED" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10"/>
-                    <TextBlock x:Name="DelayText" Margin="10" TextAlignment="Center" FontSize="26.667"/>
-                    <Slider x:Name="Delay" Width="200" Maximum="100" LargeChange="10" SmallChange="1" Margin="10" ValueChanged="Delay_ValueChanged" ManipulationMode="All" ManipulationCompleted="Delay_ManipulationCompleted" ManipulationStarting="Delay_ManipulationStarting" Tapped="Delay_Tapped" KeyDown="Delay_KeyDown" KeyUp="Delay_KeyUp" PointerReleased="Delay_PointerReleased"  StepFrequency="10"/>
-                    <TextBlock x:Name="GpioStatus" Margin="10,10,10,10" TextAlignment="Center" Style="{StaticResource CaptionTextBlockStyle}" />
-                    <TextBlock x:Name="BlinkyAllJoynStatus" Margin="10,10,10,10" TextAlignment="Center" Style="{StaticResource CaptionTextBlockStyle}" />
-                    <TextBlock x:Name="Test" TextAlignment="Center"/>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
-
+        <WebView Name="webView" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Page>
