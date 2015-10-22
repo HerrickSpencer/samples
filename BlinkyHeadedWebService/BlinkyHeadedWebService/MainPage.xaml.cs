@@ -26,6 +26,7 @@ namespace BlinkyHeadedWebService
     public sealed partial class MainPage : Page
     {
         HttpServer webServer;
+        private DispatcherTimer blinkyTimer;
         private Windows.ApplicationModel.Resources.ResourceLoader loader;
         private int LEDStatus = 0;
         private readonly int LED_PIN = 47; // on-board LED on the Rpi2
@@ -40,11 +41,23 @@ namespace BlinkyHeadedWebService
 
             InitializeGPIO();
 
+            blinkyTimer = new DispatcherTimer();
+            blinkyTimer.Interval = TimeSpan.FromMilliseconds(0);
+            blinkyTimer.Tick += Timer_Tick;
+
             webServer = new HttpServer(8000);
             webServer.BlinkIntervalChanged += WebServer_BlinkIntervalChanged;
             webServer.StartServer();
 
             //this.webView.Source = localPage;
+        }
+
+        private void Timer_Tick(object sender, object e)
+        {
+            if (this.blinkyTimer.IsEnabled)
+            {
+                FlipLED();
+            }
         }
 
         private void WebServer_BlinkIntervalChanged(int newBlinkInterval)
@@ -58,6 +71,20 @@ namespace BlinkyHeadedWebService
             await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 this.webView.Source = localPage;
+                if (newBlinkInterval > 0)
+                {
+                    this.blinkyTimer.Interval = TimeSpan.FromMilliseconds(10000 / newBlinkInterval);
+                    if (!this.blinkyTimer.IsEnabled)
+                    {
+                        this.blinkyTimer.Start();
+                    }
+                }
+                else
+                {
+                    this.blinkyTimer.Stop();
+                    this.TurnOffLED();
+                    this.blinkyTimer.Interval = TimeSpan.FromMilliseconds(0);
+                }
             });
         }
 
